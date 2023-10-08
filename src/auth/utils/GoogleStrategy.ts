@@ -18,8 +18,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
 
   async validate(accessToken: string, refreshToken: string, profile: any) {
     console.log({ profile });
-    console.log(accessToken);
-    console.log(refreshToken);
+    console.log({ accessToken });
+    console.log({ refreshToken });
 
     console.log('email', profile.emails[0].value);
     console.log('name', profile.displayName);
