@@ -5,7 +5,4 @@ export class UpdateListDto extends CreateListDto {
   @IsString()
   @IsNotEmpty()
   name: string;
-
-  @IsString()
-  description?: string;
 }

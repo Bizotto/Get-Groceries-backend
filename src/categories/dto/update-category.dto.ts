@@ -7,9 +7,5 @@ export class UpdateCategoryDto extends CreateCategoryDto {
   name: string;
 
   @IsString()
-  @IsNotEmpty()
-  description: string;
-
-  @IsString()
   id: string;
 }

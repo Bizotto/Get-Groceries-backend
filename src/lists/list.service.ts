@@ -7,13 +7,12 @@ export class ListService {
   constructor(private prismaService: PrismaService) {}
 
   async createList(data: CreateListDto) {
-    const { name, description } = data;
+    const { name } = data;
 
     //TODO: add validation on front end with something to make the user chose with want the same name
     const list = await this.prismaService.list.create({
       data: {
         name,
-        description,
       },
     });
 

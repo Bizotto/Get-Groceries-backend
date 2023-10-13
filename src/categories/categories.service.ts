@@ -8,7 +8,7 @@ export class CategoryService {
 
   async createCategory(@Body() data: CreateCategoryDto) {
     try {
-      const { name, description } = data;
+      const { name } = data;
 
       const exists = await this.prisma.category.findFirst({
         where: {
@@ -17,8 +17,6 @@ export class CategoryService {
       });
 
       if (!name) throw new BadRequestException('Name is required');
-      if (!description)
-        throw new BadRequestException('Description is required');
       if (exists) throw new BadRequestException('Category already exists');
 
       return this.prisma.category.create({ data });

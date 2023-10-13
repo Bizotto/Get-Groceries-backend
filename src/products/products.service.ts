@@ -9,7 +9,7 @@ export class ProductsService {
 
   async createProduct(@Body() data: CreateProductDto): Promise<any> {
     try {
-      const { categoryId, name, price, description } = data;
+      const { categoryId, name } = data;
 
       const exists = await this.prisma.product.findFirst({
         where: {
@@ -18,14 +18,11 @@ export class ProductsService {
       });
 
       if (!name) throw new BadRequestException('Name is required');
-      if (!price) throw new BadRequestException('Price is required');
       if (exists) throw new BadRequestException('Product already exists');
 
       const product = await this.prisma.product.create({
         data: {
           name,
-          price,
-          description,
           category_id: categoryId,
         },
       });
@@ -60,7 +57,7 @@ export class ProductsService {
 
   async updateProduct(@Param('id') id: string, @Body() data: UpdateProductDto) {
     try {
-      const { name, price, categoryId, description } = data;
+      const { name, categoryId } = data;
 
       const exists = await this.prisma.product.findFirst({
         where: {
@@ -69,15 +66,12 @@ export class ProductsService {
       });
 
       if (!name) throw new BadRequestException('Name is required');
-      if (!price) throw new BadRequestException('Price is required');
       if (exists) throw new BadRequestException('Product name already exist');
 
       const product = await this.prisma.product.update({
         where: { id },
         data: {
           name,
-          price,
-          description,
           category_id: categoryId,
         },
       });
