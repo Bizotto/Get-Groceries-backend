@@ -25,6 +25,11 @@ export class ProductsController {
     return this.productsService.getProductById(id);
   }
 
+  @Get('/category/:id')
+  GetProductsByCategory(@Param('id') id: string) {
+    return this.productsService.getProductsByCategory(id);
+  }
+
   @Post()
   CreateProduct(@Body() body: CreateProductDto) {
     return this.productsService.createProduct(body);

@@ -46,13 +46,20 @@ export class ProductsService {
     });
   }
 
+  async getProductsByCategory(@Param('id') id: string) {
+    return this.prisma.product.findMany({
+      where: {
+        category_id: id,
+      },
+    });
+  }
+
   async deleteProduct(@Param('id') id: string) {
-    await this.prisma.product.delete({
+    return await this.prisma.product.delete({
       where: {
         id,
       },
     });
-    return;
   }
 
   async updateProduct(@Param('id') id: string, @Body() data: UpdateProductDto) {
