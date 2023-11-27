@@ -6,6 +6,7 @@ import { CategoryModule } from './categories/categories.module';
 import { PrismaService } from './database/prisma.service';
 import { ListModule } from './lists/list.module';
 import { ProductModule } from './products/products.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ProductModule } from './products/products.module';
     CategoryModule,
     ListModule,
     AuthModule,
+    UserModule,
     PassportModule.register({ session: true }),
   ],
   providers: [PrismaService],

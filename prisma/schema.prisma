@@ -17,6 +17,12 @@ model User {
   lists List[]
 }
 
+model Credentials {
+  id       String @id @default(uuid())
+  name     String @unique
+  password String
+}
+
 model Product {
   id          String    @id @default(cuid())
   name        String
